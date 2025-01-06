@@ -1,3 +1,4 @@
+
 package com.mantis.schoolRegistrationSystem;
 
 import org.springframework.boot.SpringApplication;
