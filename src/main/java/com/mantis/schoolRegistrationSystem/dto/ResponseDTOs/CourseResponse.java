@@ -1,9 +1,8 @@
 package com.mantis.schoolRegistrationSystem.dto.ResponseDTOs;
 
-import com.mantis.schoolRegistrationSystem.entity.Student;
+
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class CourseResponse {
     private Long id;

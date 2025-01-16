@@ -1,10 +1,13 @@
 package com.mantis.schoolRegistrationSystem.entity;
 
+import aj.org.objectweb.asm.commons.Remapper;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Course {
@@ -20,73 +23,89 @@ public class Course {
     @ManyToOne
     private School school;
 
-    @OneToMany(mappedBy = "course")
+    // Öğrencilerle many-to-many ilişki
+    @ManyToMany
+    @JoinTable(
+            name = "course_student",
+            joinColumns = @JoinColumn(name = "course_id"),
+            inverseJoinColumns = @JoinColumn(name = "student_id")
+    )
+    private Set<Student> students = new HashSet<>();
+
+    // Öğretmenle one-to-one ilişki (bir kursun bir öğretmeni olur)
+    @OneToOne
     private Teacher teacher;
 
-    @OneToMany(mappedBy = "course")
-    private List<Student> students;
-
-    //Getter and setter
-    public Long getId(){
+    // Getter and Setters
+    public Long getId() {
         return id;
     }
-    public void setId(Long id){
+
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
-    public void setName(String name){
-        this.name=name;
+
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDescription(){
+    public String getDescription() {
         return description;
     }
-    public void setDescription(String description){
+
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public LocalDateTime getStartDate(){
+    public LocalDateTime getStartDate() {
         return startDate;
     }
-    public void setStartDate(LocalDateTime startDate){
+
+    public void setStartDate(LocalDateTime startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDateTime getEndDate(){
+    public LocalDateTime getEndDate() {
         return endDate;
     }
-    public void setEndDate(LocalDateTime endDate){
+
+    public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
     }
 
-    public Integer getCapacity(){
+    public Integer getCapacity() {
         return capacity;
     }
-    public void setCapacity(Integer capacity){
+
+    public void setCapacity(Integer capacity) {
         this.capacity = capacity;
     }
 
-    public School getSchool(){
+    public School getSchool() {
         return school;
     }
-    public void setSchool(School school){
+
+    public void setSchool(School school) {
         this.school = school;
     }
 
-    public Teacher getTeacher(){
+    public Teacher getTeacher() {
         return teacher;
     }
-    public void setTeacher(Teacher teacher){
-        this.teacher=teacher;
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 
-    public List<Student> getStudents(){
+    public Set<Student> getStudents() {
         return students;
     }
-    public void setStudents(List<Student> students){
+
+    public void setStudents(Set<Student> students) {
         this.students = students;
     }
 

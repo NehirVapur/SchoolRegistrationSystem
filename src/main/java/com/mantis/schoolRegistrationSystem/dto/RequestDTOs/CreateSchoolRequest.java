@@ -11,6 +11,8 @@ public class CreateSchoolRequest {
     @Valid
     @NotNull(message = "Adres gerekli.")
     private CreateAdressRequest adress;
+    private Long schoolId;
+
 
     public String getName() {
         return name;
@@ -26,5 +28,13 @@ public class CreateSchoolRequest {
 
     public void setAdress(CreateAdressRequest adress) {
         this.adress = adress;
+    }
+
+    public Long getSchoolId() {
+        return schoolId;
+    }
+
+    public void setSchoolId(Long schoolId) {
+        this.schoolId = schoolId;
     }
 }

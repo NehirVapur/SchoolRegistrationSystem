@@ -1,9 +1,7 @@
 package com.mantis.schoolRegistrationSystem.dto.RequestDTOs;
 
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 
 import java.time.LocalDateTime;
 
@@ -24,6 +22,19 @@ public class CreateCourseRequest {
     @Min(value = 1, message = "Öğrenci sayısı minimum 1 olabilir.")
     @Max(value = 30, message = "Öğrenci sayısı maksimum 30 olabiliir.")
     private Integer capacity;
+
+    @NotNull(message = "School ID olmalı.")
+    private Long schoolId;
+
+    public Long getSchoolId() {
+        return schoolId;
+    }
+
+    public void setSchoolId(Long schoolId) {
+        this.schoolId = schoolId;
+    }
+
+
 
     public String getName() {
         return name;

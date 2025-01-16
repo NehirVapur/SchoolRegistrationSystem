@@ -13,6 +13,8 @@ public class CreateManagerRequest {
     @NotNull(message = "Şifre boş olamaz.")
     private String password;
 
+
+
     public String getSurname() {
         return surname;
     }

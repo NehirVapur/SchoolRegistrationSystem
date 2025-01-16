@@ -54,4 +54,8 @@ public class CreateAdressRequest {
     public void setNumber(String number) {
         this.number = number;
     }
+
+    public CreateAdressRequest getAdress() {
+        return null;
+    }
 }
